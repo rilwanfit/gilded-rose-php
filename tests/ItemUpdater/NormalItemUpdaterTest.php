@@ -21,4 +21,15 @@ final class NormalItemUpdaterTest extends TestCase
         $this->assertSame(9, $normalItem->sellIn);
         $this->assertSame(19, $normalItem->quality);
     }
+
+    /** @test */
+    public function qualityDegradesTwiceAsFastAfterSellByDateHasPassed()
+    {
+        $itemAfterSellBy = new Item("Normal Item", 0, 10);
+
+        $itemUpdated = new NormalItemUpdater();
+        $itemUpdated->update($itemAfterSellBy);
+
+        $this->assertEquals(8, $itemAfterSellBy->quality);
+    }
 }

@@ -25,10 +25,19 @@ final class BackstagePassesItemUpdater implements ItemUpdater
         }
 
         $this->decreaseSellIn($item);
+
+        $this->whenSellByDateHasPassed($item);
     }
 
     private function decreaseSellIn(Item $item): void
     {
         $item->sellIn--;
+    }
+
+    private function whenSellByDateHasPassed(Item $item)
+    {
+        if ($item->sellIn < 0) {
+            $item->quality = 0;
+        }
     }
 }

@@ -48,7 +48,6 @@ final class BackstagePassesItemUpdaterTest extends TestCase
     /** @test */
     public function backstagePassesQualityDropsToZeroAfterTheConcert()
     {
-        $this->markTestSkipped();
         $backstagePasses = new Item("Backstage passes to a TAFKAL80ETC concert", 0, 20);
 
         $itemUpdater = new BackstagePassesItemUpdater();

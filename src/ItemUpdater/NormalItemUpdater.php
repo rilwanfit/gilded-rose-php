@@ -15,10 +15,21 @@ final class NormalItemUpdater implements ItemUpdater
         }
 
         $this->decreaseSellIn($item);
+
+        $this->whenSellByDateHasPassed($item);
     }
 
     private function decreaseSellIn(Item $item): void
     {
         $item->sellIn--;
+    }
+
+    private function whenSellByDateHasPassed(Item $item)
+    {
+        if ($item->sellIn < 0) {
+            if ($item->quality > 0) {
+                $item->quality = $item->quality - 1;
+            }
+        }
     }
 }

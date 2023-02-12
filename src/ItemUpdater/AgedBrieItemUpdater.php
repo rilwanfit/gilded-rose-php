@@ -10,6 +10,8 @@ final class AgedBrieItemUpdater implements ItemUpdater
 {
     public function update(Item $item): void
     {
-        // TODO: Implement update() method.
+        if ($item->quality < 50) {
+            $item->quality = $item->quality + 1;
+        }
     }
 }

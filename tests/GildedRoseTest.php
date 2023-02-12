@@ -56,4 +56,15 @@ class GildedRoseTest extends TestCase
 
         $this->assertGreaterThan(10, $agedBrie->quality);
     }
+
+    /** @test */
+    public function qualityNeverIncreasesAboveFifty()
+    {
+        $normalItem = new Item("foo", 5, 50);
+
+        $gildedRose = new GildedRose([$normalItem]);
+        $gildedRose->updateQuality();
+
+        $this->assertLessThanOrEqual(50, $normalItem->quality);
+    }
 }

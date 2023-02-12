@@ -13,5 +13,12 @@ final class NormalItemUpdater implements ItemUpdater
         if ($item->quality > 0) {
             $item->quality = $item->quality - 1;
         }
+
+        $this->decreaseSellIn($item);
+    }
+
+    private function decreaseSellIn(Item $item): void
+    {
+        $item->sellIn--;
     }
 }

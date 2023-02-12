@@ -23,5 +23,12 @@ final class BackstagePassesItemUpdater implements ItemUpdater
                 }
             }
         }
+
+        $this->decreaseSellIn($item);
+    }
+
+    private function decreaseSellIn(Item $item): void
+    {
+        $item->sellIn--;
     }
 }

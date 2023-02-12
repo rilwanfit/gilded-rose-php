@@ -10,6 +10,6 @@ final class SulfurasItemUpdater implements ItemUpdater
 {
     public function update(Item $item): void
     {
-        // TODO: Implement update() method.
+        // "Sulfuras", being a legendary item, never has to be sold or decreases in Quality.
     }
 }

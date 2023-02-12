@@ -4,6 +4,8 @@ declare(strict_types=1);
 
 namespace GildedRose;
 
+use GildedRose\Builder\ItemUpdaterBuilder;
+
 final class GildedRose
 {
     /**
@@ -17,12 +19,10 @@ final class GildedRose
     public function updateQuality(): void
     {
         foreach ($this->items as $item) {
+            $itemUpdater = ItemUpdaterBuilder::buildByItemName($item->name);
+
             if ($item->name != 'Aged Brie' and $item->name != 'Backstage passes to a TAFKAL80ETC concert') {
-                if ($item->quality > 0) {
-                    if ($item->name != 'Sulfuras, Hand of Ragnaros') {
-                        $item->quality = $item->quality - 1;
-                    }
-                }
+                $itemUpdater->update($item);
             } else {
                 if ($item->quality < 50) {
                     $item->quality = $item->quality + 1;

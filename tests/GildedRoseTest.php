@@ -34,4 +34,15 @@ class GildedRoseTest extends TestCase
         $this->assertEquals(9, $itemBeforeSellBy->quality);
         $this->assertEquals(8, $itemAfterSellBy->quality);
     }
+
+    /** @test */
+    public function qualityNeverNegative()
+    {
+        $normalItem = new Item("foo", 5, 0);
+
+        $gildedRose = new GildedRose([$normalItem]);
+        $gildedRose->updateQuality();
+
+        $this->assertEquals(0, $normalItem->quality);
+    }
 }

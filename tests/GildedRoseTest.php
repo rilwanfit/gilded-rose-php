@@ -21,4 +21,17 @@ class GildedRoseTest extends TestCase
         $this->assertSame(9, $normalItem->sellIn);
         $this->assertSame(19, $normalItem->quality);
     }
+
+    /** @test */
+    public function qualityDegradesTwiceAsFastAfterSellByDateHasPassed()
+    {
+        $itemBeforeSellBy = new Item("Normal Item", 5, 10);
+        $itemAfterSellBy = new Item("Normal Item", 0, 10);
+
+        $gildedRose = new GildedRose([$itemBeforeSellBy, $itemAfterSellBy]);
+        $gildedRose->updateQuality();
+
+        $this->assertEquals(9, $itemBeforeSellBy->quality);
+        $this->assertEquals(8, $itemAfterSellBy->quality);
+    }
 }

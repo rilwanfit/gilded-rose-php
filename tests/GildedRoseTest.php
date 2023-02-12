@@ -90,4 +90,15 @@ class GildedRoseTest extends TestCase
 
         $this->assertGreaterThan(10, $backstagePasses->quality);
     }
+
+    /** @test */
+    public function backstagePassesQualityIncreasesByTwoWhenThereAreTenDaysOrLess()
+    {
+        $backstagePasses = new Item("Backstage passes to a TAFKAL80ETC concert", 10, 20);
+
+        $gildedRose = new GildedRose([$backstagePasses]);
+        $gildedRose->updateQuality();
+
+        $this->assertSame(22, $backstagePasses->quality);
+    }
 }

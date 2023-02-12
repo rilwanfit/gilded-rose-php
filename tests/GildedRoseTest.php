@@ -67,4 +67,16 @@ class GildedRoseTest extends TestCase
 
         $this->assertLessThanOrEqual(50, $normalItem->quality);
     }
+
+    /** @test */
+    public function sulfurasSellInOrQualityNeverAlters()
+    {
+        $sulfurasItem = new Item("Sulfuras, Hand of Ragnaros", 5, 80);
+
+        $gildedRose = new GildedRose([$sulfurasItem]);
+        $gildedRose->updateQuality();
+
+        $this->assertSame(5, $sulfurasItem->sellIn);
+        $this->assertSame(80, $sulfurasItem->quality);
+    }
 }

@@ -79,4 +79,15 @@ class GildedRoseTest extends TestCase
         $this->assertSame(5, $sulfurasItem->sellIn);
         $this->assertSame(80, $sulfurasItem->quality);
     }
+
+    /** @test */
+    public function backstagePassesQualityIncreasesWithAge()
+    {
+        $backstagePasses = new Item("Backstage passes to a TAFKAL80ETC concert", 10, 10);
+
+        $gildedRose = new GildedRose([$backstagePasses]);
+        $gildedRose->updateQuality();
+
+        $this->assertGreaterThan(10, $backstagePasses->quality);
+    }
 }

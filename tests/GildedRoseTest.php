@@ -45,4 +45,15 @@ class GildedRoseTest extends TestCase
 
         $this->assertEquals(0, $normalItem->quality);
     }
+
+    /** @test */
+    public function agedBrieQualityIncreasesWithAge()
+    {
+        $agedBrie = new Item("Aged Brie", 10, 10);
+
+        $gildedRose = new GildedRose([$agedBrie]);
+        $gildedRose->updateQuality();
+
+        $this->assertGreaterThan(10, $agedBrie->quality);
+    }
 }

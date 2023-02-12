@@ -123,4 +123,18 @@ class GildedRoseTest extends TestCase
 
         $this->assertSame(0, $backstagePasses->quality);
     }
+
+    /** @test */
+    public function conjuredQualityDegradesTwiceAsFastAsNormalItem()
+    {
+        $this->markTestSkipped();
+        $normalItem = new Item("foo", 10, 10);
+        $conjuredItem = new Item("Conjured Mana Cake,", 10, 10);
+
+        $gildedRose = new GildedRose([$normalItem, $conjuredItem]);
+        $gildedRose->updateQuality();
+
+        $this->assertSame(9, $normalItem->quality);
+        $this->assertSame(8, $conjuredItem->quality);
+    }
 }

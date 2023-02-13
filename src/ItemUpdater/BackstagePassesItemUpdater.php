@@ -10,19 +10,7 @@ final class BackstagePassesItemUpdater implements ItemUpdater
 {
     public function update(Item $item): void
     {
-        if ($item->quality < 50) {
-            $item->quality = $item->quality + 1;
-            if ($item->sellIn < 11) {
-                if ($item->quality < 50) {
-                    $item->quality = $item->quality + 1;
-                }
-            }
-            if ($item->sellIn < 6) {
-                if ($item->quality < 50) {
-                    $item->quality = $item->quality + 1;
-                }
-            }
-        }
+        $item->quality = $this->incrementQuality($item->sellIn, $item->quality);
 
         $this->decreaseSellIn($item);
 
@@ -39,5 +27,20 @@ final class BackstagePassesItemUpdater implements ItemUpdater
         if ($item->sellIn < 0) {
             $item->quality = 0;
         }
+    }
+
+    private function incrementQuality(int $sellIn, int $quality): int
+    {
+        $qualityIncrement = 1;
+
+        if ($sellIn < 11) {
+            $qualityIncrement++;
+        }
+
+        if ($sellIn < 6) {
+            $qualityIncrement++;
+        }
+
+        return min(50, $quality + $qualityIncrement);
     }
 }

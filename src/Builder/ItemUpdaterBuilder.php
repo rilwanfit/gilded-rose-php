@@ -6,6 +6,7 @@ namespace GildedRose\Builder;
 
 use GildedRose\ItemUpdater\AgedBrieItemUpdater;
 use GildedRose\ItemUpdater\BackstagePassesItemUpdater;
+use GildedRose\ItemUpdater\ConjuredItemUpdater;
 use GildedRose\ItemUpdater\ItemUpdater;
 use GildedRose\ItemUpdater\NormalItemUpdater;
 use GildedRose\ItemUpdater\SulfurasItemUpdater;
@@ -18,6 +19,7 @@ final class ItemUpdaterBuilder
             'Aged Brie' => new AgedBrieItemUpdater(),
             'Backstage passes to a TAFKAL80ETC concert' => new BackstagePassesItemUpdater(),
             'Sulfuras, Hand of Ragnaros' => new SulfurasItemUpdater(),
+            'Conjured Mana Cake' => new ConjuredItemUpdater(),
             default => new NormalItemUpdater()
         };
     }

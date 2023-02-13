@@ -10,10 +10,9 @@ use PHPUnit\Framework\TestCase;
 
 final class NormalItemUpdaterTest extends TestCase
 {
-    /** @test */
-    public function updateQualityForNormalItem(): void
+    public function testUpdateQualityForNormalItem(): void
     {
-        $normalItem = new Item("foo", 10, 20);
+        $normalItem = new Item('foo', 10, 20);
         $itemUpdated = new NormalItemUpdater();
         $itemUpdated->update($normalItem);
 
@@ -22,10 +21,9 @@ final class NormalItemUpdaterTest extends TestCase
         $this->assertSame(19, $normalItem->quality);
     }
 
-    /** @test */
-    public function qualityDegradesTwiceAsFastAfterSellByDateHasPassed()
+    public function testQualityDegradesTwiceAsFastAfterSellByDateHasPassed(): void
     {
-        $itemAfterSellBy = new Item("Normal Item", 0, 10);
+        $itemAfterSellBy = new Item('Normal Item', 0, 10);
 
         $itemUpdated = new NormalItemUpdater();
         $itemUpdated->update($itemAfterSellBy);

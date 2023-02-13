@@ -10,10 +10,9 @@ use PHPUnit\Framework\TestCase;
 
 final class AgedBrieItemUpdaterTest extends TestCase
 {
-    /** @test */
-    public function agedBrieQualityIncreasesWithAge()
+    public function testAgedBrieQualityIncreasesWithAge(): void
     {
-        $agedBrie = new Item("Aged Brie", 10, 10);
+        $agedBrie = new Item('Aged Brie', 10, 10);
         $itemUpdated = new AgedBrieItemUpdater();
         $itemUpdated->update($agedBrie);
 

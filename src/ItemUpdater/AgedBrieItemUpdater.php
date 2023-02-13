@@ -24,7 +24,7 @@ final class AgedBrieItemUpdater implements ItemUpdater
         $item->sellIn--;
     }
 
-    private function whenSellByDateHasPassed(Item $item)
+    private function whenSellByDateHasPassed(Item $item): void
     {
         if ($item->sellIn < 0) {
             if ($item->quality < 50) {

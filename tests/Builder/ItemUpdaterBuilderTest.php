@@ -7,6 +7,7 @@ namespace Tests\Builder;
 use GildedRose\Builder\ItemUpdaterBuilder;
 use GildedRose\ItemUpdater\AgedBrieItemUpdater;
 use GildedRose\ItemUpdater\BackstagePassesItemUpdater;
+use GildedRose\ItemUpdater\ItemUpdater;
 use GildedRose\ItemUpdater\NormalItemUpdater;
 use GildedRose\ItemUpdater\SulfurasItemUpdater;
 use PHPUnit\Framework\TestCase;
@@ -14,10 +15,10 @@ use PHPUnit\Framework\TestCase;
 final class ItemUpdaterBuilderTest extends TestCase
 {
     /**
-     * @test
      * @dataProvider data()
+     * @param class-string<ItemUpdater> $expectedClass
      */
-    public function buildByItemName($itemName, $expectedClass)
+    public function testBuildByItemName(string $itemName, $expectedClass): void
     {
         $itemUpdater = ItemUpdaterBuilder::buildByItemName($itemName);
         $this->assertInstanceOf($expectedClass, $itemUpdater);

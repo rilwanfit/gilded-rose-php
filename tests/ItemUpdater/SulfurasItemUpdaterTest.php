@@ -10,10 +10,9 @@ use PHPUnit\Framework\TestCase;
 
 final class SulfurasItemUpdaterTest extends TestCase
 {
-    /** @test */
-    public function sulfurasSellInOrQualityNeverAlters()
+    public function testSulfurasSellInOrQualityNeverAlters(): void
     {
-        $sulfurasItem = new Item("Sulfuras, Hand of Ragnaros", 5, 80);
+        $sulfurasItem = new Item('Sulfuras, Hand of Ragnaros', 5, 80);
 
         $itemUpdated = new SulfurasItemUpdater();
         $itemUpdated->update($sulfurasItem);
@@ -21,5 +20,4 @@ final class SulfurasItemUpdaterTest extends TestCase
         $this->assertSame(5, $sulfurasItem->sellIn);
         $this->assertSame(80, $sulfurasItem->quality);
     }
-
 }
